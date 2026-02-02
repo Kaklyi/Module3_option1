@@ -1,0 +1,23 @@
+START
+
+Declare income as double
+Declare taxWithholding as double
+Declare taxRate as double
+
+Prompt user to enter weekly income
+Read income
+
+IF income < 500
+    Set taxRate to 0.10
+ELSE IF income is between 500 and 1500
+    Set taxRate to 0.15
+ELSE IF income is between 1500 and 2500
+    Set taxRate to 0.20
+ELSE
+    Set taxRate to 0.30
+
+Calculate taxWithholding = income × taxRate
+
+Display taxWithholding
+
+END
