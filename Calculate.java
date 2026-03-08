@@ -1,42 +1,55 @@
-
 import java.util.Scanner;
 
 public class Calculate {
+
+    // Enum representing tax brackets
+    enum TaxBracket {
+        LOW(0.10),
+        MEDIUM(0.15),
+        HIGH(0.20),
+        VERY_HIGH(0.30);
+
+        private final double rate;
+
+        TaxBracket(double rate) {
+            this.rate = rate;
+        }
+
+        public double getRate() {
+            return rate;
+        }
+    }
 
     public static void main(String[] args) {
 
         // attributes
         double income;
         double taxWithholding;
-        double taxRate;
+        TaxBracket bracket;
 
         Scanner input = new Scanner(System.in);
 
-        // ask user for their weekly income
-
+        // ask user for weekly income
         System.out.print("Please enter your weekly income: ");
         income = input.nextDouble();
 
-        // income less than 500 is going be a 10% tax
+        // determine bracket
         if (income < 500) {
-            taxRate = 0.10;
-        }
-        // income between 500 and 1500 is 15% tax
-        else if (income >= 500 && income < 1500) {
-            taxRate = 0.15;
-        }
-        // income between 1500 and 2500 is 20%
-        else if (income >= 1500 && income < 2500) {
-            taxRate = 0.20;
-        }
-        // any other is going to be income higher than 2500 is 30% tax rate
-        else {
-            taxRate = 0.30;
+            bracket = TaxBracket.LOW;
+        } else if (income < 1500) {
+            bracket = TaxBracket.MEDIUM;
+        } else if (income < 2500) {
+            bracket = TaxBracket.HIGH;
+        } else {
+            bracket = TaxBracket.VERY_HIGH;
         }
 
-        // multiply income with the percentage to get tax withholdings
-        taxWithholding = income * taxRate;
+        // calculate withholding
+        taxWithholding = income * bracket.getRate();
+
+        // display result
         System.out.println("Weekly tax withholding: " + taxWithholding);
 
+        input.close();
     }
 }
