@@ -48,7 +48,7 @@ public class Calculate {
         taxWithholding = income * bracket.getRate();
 
         // display result
-        System.out.println("Weekly tax withholding: " + taxWithholding);
+        System.out.println("Your weekly tax withholding: " + taxWithholding);
 
         input.close();
     }
