@@ -1,23 +1,29 @@
 START
 
-Declare income as double
-Declare taxWithholding as double
-Declare taxRate as double
+// Declare variables
+DECLARE income AS DOUBLE
+DECLARE taxWithholding AS DOUBLE
+DECLARE taxRate AS DOUBLE
 
-Prompt user to enter weekly income
-Read income
+// Ask the user for weekly income
+DISPLAY "Enter your weekly income:"
+INPUT income
 
-IF income < 500
-    Set taxRate to 0.10
-ELSE IF income is between 500 and 1500
-    Set taxRate to 0.15
-ELSE IF income is between 1500 and 2500
-    Set taxRate to 0.20
+// Determine tax rate based on income bracket
+IF income < 500 THEN
+    SET taxRate = 0.10
+ELSE IF income >= 500 AND income < 1500 THEN
+    SET taxRate = 0.15
+ELSE IF income >= 1500 AND income < 2500 THEN
+    SET taxRate = 0.20
 ELSE
-    Set taxRate to 0.30
+    SET taxRate = 0.30
+END IF
 
-Calculate taxWithholding = income × taxRate
+// Calculate tax withholding
+SET taxWithholding = income * taxRate
 
-Display taxWithholding
+// Display result
+DISPLAY taxWithholding
 
 END
